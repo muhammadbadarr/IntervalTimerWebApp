@@ -4,8 +4,3 @@ Transform your work and break sessions with our intuitive Interval Timer App, de
 # Overview
 The time interval is a web-based app used to determine how long a reminder or alarm will sound after a certain amount of time. For example, a reminder can be set to sound every 30 minutes, which means the time interval is 30 minutes.
 
-```[tasklist]
-### My tasks
-- [ ] https://github.com/octo-org/octo-repo/issues/45
-- [ ] Draft task
-```
