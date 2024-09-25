@@ -1,4 +1,4 @@
-# Interval Timer Web App
+# Interval Timer Web App (Rhythm)
 
 A simple yet functional interval timer web application built with HTML, CSS, JavaScript, jQuery, and Bootstrap. This application allows users to set custom work and rest intervals, define the number of intervals, and provides a smooth timer interface for workouts or focused sessions.
 
