@@ -3,139 +3,129 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rhythm</title>
 
-    <title>Document</title>
-
-    <link rel="stylesheet" href="style2.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style2.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="/home/badar/Documents/Belajar Website (Interval TImer)/jquery.js"></script>
     <script type="text/javascript" src="/home/badar/Documents/Belajar Website (Interval TImer)/script.js"></script>
+
   </head>
 
   <body>
     <div class="timer_container" id="timerContainer">
-      <li class="timer_cont" id="tmr">00:00</li>
-      <li class="round_cont" id="roundCont">0/1</li>
-      <li class="status_cont">
-        <p id="status" class="removeList"></p>
-      </li>
-
-      <div>
+      <ul>
+        <li class="timer_cont" id="tmr">00:00</li>
+        <li class="round_cont" id="roundCont">0/1</li>
+        <li class="status_cont">
+          <p id="status" class="removeList"></p>
+        </li>
         <li class="canvas_cont removeList" id="canvasCont">
           <span>0%</span>
           <canvas id="canvas"></canvas>
           <span>100%</span>
         </li>
-
         <li class="removeList">
           <a href="#popup">
             <button class="start_button">
               <i class="fa fa-gear"></i>
-          </button>
+            </button>
           </a>
           <button class="start_button" id="buttonStart">
             <span class="glyphicon glyphicon-play"></span>
           </button>
         </li>
-      </div>
+      </ul>
     </div>
 
-    <!-- Pop Up Setion -->
+    <!-- Pop Up Section -->
     <div class="popup" id="popup">
       <div class="popup_content">
-
-        <a href="#" class="popup_close"> &times; </a>
+        <a href="#" class="popup_close" aria-label="Close"> &times; </a>
         <div class="popup_header">
-          <h1>
-            Settings
-          </h1>
-          <hr>
+          <h1>Settings</h1>
         </div>
-
-        <div class="popup_intervals" id="interval">
-          <li class="removeList">
-            Intervals
-          </li>
-          <li class="removeList">
-            <div class='intervals_cont'>
-              <button class='intervals_btn' id='btn_minus' onclick='onIntervalsBtnClick(-1)'>
-                -
-              </button>
-              <input type="text" id='txtintervals' value='3' class='minsec' 				readonly/>
-              <button class='intervals_btn' id='btn_plus' onclick='onIntervalsBtnClick(1)'> 
-                +
-              </button>
-            </div>
-          </li>     
-        </div>
-
-        <div class="popup_work" id="Work">
-          <li class="removeList">
-            Work
-          </li>
-          <li class="removeList">
-            <div class='minsec_cont'>
-              <input class='minsec' id="txtwork_min" value='00' placeholder="00"/>
-                <span class='span_colon'>:
-                </span>
-                <input class='minsec' type="text" id="txtwork_sec" value='30' placeholder="00"/>
+      <hr/>  
+        <ul>
+          <li class="popup_intervals" id="interval">
+            <span>Intervals</span>
+            <div class="intervals_cont">
+              <button class="intervals_btn" id="btn_minus" onclick="onIntervalsBtnClick(-1)">-</button>
+              <input type="text" id="txtintervals" value="1" class="minsec" readonly />
+              <button class="intervals_btn" id="btn_plus" onclick="onIntervalsBtnClick(1)">+</button>
             </div>
           </li>
-        </div>
-
-        <div class="popup_rest" id="Rest">
-          <li class="removeList">
-            Rest
-          <li class="removeList">
+          <li class="popup_work" id="Work">
+            <span>Work</span>
+            <div class="minsec_cont">
+              <input onblur="onSelectingTime(this)" class="minsec" type="text" id="txtwork_min" value="00" placeholder="00" />
+              <span class="span_colon">:</span>
+              <input onblur="onSelectingTime(this)" class="minsec" type="text" id="txtwork_sec" value="30" placeholder="00" />
+            </div>
+          </li>
+          <li class="popup_rest" id="Rest">
+            <span>Rest</span>
             <div>
-              <input class='minsec' type="text" id="txtrest_min" value='00' placeholder="00"/>
-                <span class='span_colon'>:
-                </span>
-              <input class='minsec' type="text" id="txtrest_sec" value='30' placeholder="00"/>
+              <input onblur="onSelectingTime(this)" class="minsec" type="text" id="txtrest_min" value="00" placeholder="00" />
+              <span class="span_colon">:</span>
+              <input onblur="onSelectingTime(this)" class="minsec" type="text" id="txtrest_sec" value="30" placeholder="00" />
             </div>
           </li>
+        </ul>
+      <hr/>
+        <div class="popup_timerSummary" id="tmr_summary">
+          <h2>Total Time</h2>
+          <div class="tableTimerSummary">
+            <div class="tableTimerSummary_items">
+              <span>With Rest</span>
+              <div class='totals' id='total_with_rest'>
+                00 : 00
+              </div>
+            </div>
+            <div class="tableTimerSummary_items">
+              <span>Without Rest</span>
+              <div class='totals' id='total_without_rest'>
+                00 : 00
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
     </div>
-    <!-- Pop Up Setion -->
+    <!-- Pop Up Section -->
 
+    <script>
+      $(document).ready(function () {
+        initInputsData();
+
+        var txtwork_min = document.getElementById("txtwork_min");
+        var txtwork_sec = document.getElementById("txtwork_sec");
+
+        var txtrest_min = document.getElementById("txtrest_min");
+        var txtrest_sec = document.getElementById("txtrest_sec");
+
+        txtwork_min.addEventListener("input", onSelectingTime);
+        txtwork_min.addEventListener("focus", onSelectingTimeFocus);
+
+        txtwork_sec.addEventListener("input", onSelectingTime);
+        txtwork_sec.addEventListener("focus", onSelectingTimeFocus);
+
+        txtrest_min.addEventListener("focus", onSelectingTimeFocus);
+        txtrest_min.addEventListener("input", onSelectingTime);
+
+        txtrest_sec.addEventListener("input", onSelectingTime);
+        txtrest_sec.addEventListener("focus", onSelectingTimeFocus);
+
+        var txtintervals = document.getElementById("txtintervals");
+        txtintervals.addEventListener("input", onIntervalsinputChange);
+      });
+    </script>
   </body>
-  <script>
-    $(document).ready(function(){
-
-      initInputsData();
-
-      /* Time (Second, minute) input event*/
-
-      var txtwork_min = document.getElementById('txtwork_min')
-      var txtwork_sec = document.getElementById('txtwork_sec')
-
-      var txtrest_min = document.getElementById('txtrest_min')
-      var txtrest_sec = document.getElementById('txtrest_sec')
-
-      txtwork_min.addEventListener('input', onSelectingTime)
-      txtwork_min.addEventListener('focus', onSelectingTimeFocus)
-
-      txtwork_sec.addEventListener('input', onSelectingTime)
-      txtwork_sec.addEventListener('focus', onSelectingTimeFocus)
-
-      txtrest_min.addEventListener('focus', onSelectingTimeFocus)
-      txtrest_min.addEventListener('input', onSelectingTime)
-
-      txtrest_sec.addEventListener('input', onSelectingTime)
-      txtrest_sec.addEventListener('focus', onSelectingTimeFocus)
-
-      /* Intervals input event*/
-
-      var txtintervals = document.getElementById('txtintervals')
-      txtintervals.addEventListener('input', onIntervalsinputChange)
-    })
-  </script>
 </html>
 
 </body>
