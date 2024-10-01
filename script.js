@@ -87,3 +87,14 @@ function findInputObject(id) {
 function setDefault() {
 
 }
+
+function onIntervalsBtnClick(d) {
+    var txtintervals = document.getElementById('txtintervals')
+    var curentVal = parseInt(txtintervals.value)
+    if((curentVal + d) > 0 && (curentVal + d) < 100) {
+        txtintervals.value = curentVal + d
+    }
+    if(isRunning == false) {
+        setDefault()
+    }
+}
