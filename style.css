@@ -72,12 +72,18 @@ body {
     list-style-type: none;
 }
 
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
 .start_button {
     color: #ffffff;
     background-color: #050505;
     font-size: 24px;
     border-radius: 15px;
-    padding: 5px 110px;
+    padding: 5px 135px;
     cursor: pointer;
     text-align: center;
     margin-top: 10px;
